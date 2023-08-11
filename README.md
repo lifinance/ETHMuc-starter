@@ -17,3 +17,10 @@ Running `pnpm start` will request a contract call quote for `OP (OPT) => ETH (ET
 
 Running `pnpm sendTx` will attempt sending a transaction that will execute the LI.FI step specified in `src/scripts/tx.to.send.json`
 
+### Useful links
+
+LI.FI Hackaton [postman collection](https://www.postman.com/lifinance/workspace/li-fi-hackaton)
+
+[LI.FI Docs](https://docs.li.fi/)
+
+[LI.FI API Docs](https://apidocs.li.fi/reference/welcome-to-the-lifinance-api)
