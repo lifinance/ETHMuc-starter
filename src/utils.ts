@@ -5,7 +5,12 @@ import fs from 'fs'
 
 const FILENAME = 'lifistep.json'
 
-export const prettyPrintLifiStep = (step: LifiStep): Promise<LifiStep> => {
+export const passThrough = <O, F extends (o: O) => void>(f: F) => (o: O): O => {
+    f(o)
+    return o
+}
+
+export const prettyPrintLifiStep = (step: LifiStep): void => {
     console.log('LifiStep summary: ')
     const messageValue = new BigNumber(hexToBigInt(step.transactionRequest!.value).toString()).shiftedBy(-18).toFixed(6)
     const ethPrice = Number(step.estimate.gasCosts![0].token.priceUSD)
@@ -17,7 +22,6 @@ export const prettyPrintLifiStep = (step: LifiStep): Promise<LifiStep> => {
         estimatedGasCost: step.estimate.gasCosts ? `${step.estimate.gasCosts[0].amountUSD}$` : 'Unknown'
     }
     console.table(data)
-    return Promise.resolve(step)
 }
 
 export const saveToFile = (step: LifiStep): void => {

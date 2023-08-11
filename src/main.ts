@@ -4,8 +4,8 @@ dotenv.config()
 import { getContractCallQuote } from './api'
 import { ethStakingCall } from './contractCalls/ethStaking';
 import { stETHWrappingCall } from './contractCalls/stETHWrapping';
-import { ETH_ON_MAINNET, OP_GOVERNANCE_ON_OPTIMISM, USDC_ON_MAINNET } from './commonAddresses';
-import { prettyPrintLifiStep, saveToFile } from './utils';
+import { ETH_ON_MAINNET, OP_GOVERNANCE_ON_OPTIMISM } from './commonAddresses';
+import { passThrough, prettyPrintLifiStep, saveToFile } from './utils';
 
 const main = async () => {
     const amount = 100000000000001n
@@ -27,7 +27,7 @@ const main = async () => {
 }
 
 main()
-.then(prettyPrintLifiStep)
+.then(passThrough(prettyPrintLifiStep))
 .then(saveToFile)
 .then(() => console.log(`✅ All done!`))
 .catch((e) => console.log(`💀 Error in preparing lifi step: ${e}`))
